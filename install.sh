@@ -83,14 +83,20 @@ print_status "Database created with user 'streamhib'"
 # Create application directory
 print_status "Setting up application directory..."
 cd /root
+
+# Jika direktori StreamHibV2 sudah ada, lakukan backup
 if [ -d "StreamHibV2" ]; then
     print_warning "StreamHibV2 directory already exists, backing up..."
     mv StreamHibV2 StreamHibV2.backup.$(date +%Y%m%d_%H%M%S)
 fi
 
-# Clone repository (assuming the files are already in the current directory)
-mkdir -p StreamHibV2
-cd StreamHibV2
+# Kloning repositori (INI PENTING: Anda mungkin perlu mengganti URL ini dengan URL repo Anda yang sebenarnya jika berbeda dari emuhib/StreamHibV2)
+# HAPUS BARIS DI BAWAH INI JIKA ANDA SUDAH KLONING SECARA MANUAL DAN FOLDER SUDAH ADA.
+git clone https://github.com/mayarohmatunnisa/jajalanbos.git
+
+# Navigasi ke direktori proyek yang sebenarnya
+# Ubah baris ini agar masuk ke dalam sub-direktori yang berisi package.json
+cd StreamHibV2/mayarohmatunnisa/jajalanbos/
 
 # Create necessary directories
 mkdir -p videos videos/thumbnails logs static templates
